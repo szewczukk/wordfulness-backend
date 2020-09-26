@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token
 
 from .views import *
 
@@ -24,5 +25,6 @@ router.register(r'flashcards', FlashcardViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path(r'api-token-auth/', obtain_jwt_token),
+    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
