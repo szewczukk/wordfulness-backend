@@ -10,6 +10,11 @@ class LessonViewSet(viewsets.ModelViewSet):
     serializer_class = LessonSerializer
 
 
+class AccountViewSet(viewsets.ModelViewSet):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
+
+
 class FlashcardViewSet(viewsets.ModelViewSet):
     queryset = Flashcard.objects.all()
     serializer_class = FlashcardSerializer

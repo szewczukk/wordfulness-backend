@@ -21,6 +21,7 @@ from .views import *
 
 router = routers.DefaultRouter()
 router.register(r'lessons', LessonViewSet)
+router.register(r'accounts', AccountViewSet)
 router.register(r'flashcards', FlashcardViewSet)
 
 urlpatterns = [
