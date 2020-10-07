@@ -24,6 +24,13 @@ class AccountManager(BaseUserManager):
 
 
 # Create your models here.
+class Course(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
 class Account(AbstractBaseUser):
     userTypes = [
         ('ST', 'STUDENT'),
@@ -36,6 +43,7 @@ class Account(AbstractBaseUser):
     usertype = models.CharField(max_length=2, choices=userTypes, default='ST')
     password = models.CharField(max_length=25)
     is_admin = models.BooleanField(default=False)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
 
     REQUIRED_FIELDS = ['usertype']
     USERNAME_FIELD = 'username'
@@ -59,6 +67,7 @@ class Account(AbstractBaseUser):
 class Lesson(models.Model):
     name = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
