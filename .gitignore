@@ -1,6 +1,4 @@
-.idea
 db.sqlite3
-venv
 api/__pycache__
 api/migrations/*
 backend/__pycache__
